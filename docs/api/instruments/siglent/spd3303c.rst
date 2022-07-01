@@ -1,0 +1,46 @@
+######################################
+Siglent SPD3303C power supply
+######################################
+
+Connecting to the instrument via USB
+----------------------------------------
+Once connected, determine the which is the USB TMC device.
+
+The port can then be opened like so:
+
+.. code:: python
+
+    from pymeasure.instruments.siglent import SPD3303C
+    spd3303c = SPD3303C("/dev/usbtmc0")
+
+Getting and setting parameters
+------------------------------
+
+Most parameters are implemented as properties, which means they can be read and
+written (getting and setting) in a consistent and simple way.
+The returned values are always numerical.
+
+.. code:: python
+
+    # Turning channel 1 OFF
+    spd3303c.ch1_status = False
+
+.. code:: python
+
+    # Setting channel 1 voltage output to 5 Volts
+    spd3303c.ch1_voltage = 5.0
+    spd3303c.ch1_voltage
+
+    5.0
+
+.. code:: python
+
+    # Limiting the current of channel 1 output to 0.5 Amperes
+    spd3303c.ch1_current = 0.5
+    spd3303c.ch1_current
+
+    0.5
+
+.. autoclass:: pymeasure.instruments.siglent.spd3303c.SPD3303C
+    :members:
+    :show-inheritance:
